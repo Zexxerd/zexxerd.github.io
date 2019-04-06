@@ -3,11 +3,16 @@
 <head>
 <meta charset="utf-8">
 <title>Platform (HTML5)</title>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
 <h2>Platform</h2>
 <div id="Textboard" style="width:256px;height:128px;border:2px black">
 </div>
 <canvas id="Platform" width="256px" height="128px" style="display:none"></canvas>
+<script>
+  var tf = confirm("This site may use cookies to store information for this project in the future.");
+  if (!tf){window.history.back(1);}
+</script>
 </body>
 </html>
