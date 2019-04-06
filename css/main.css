@@ -1,18 +1,19 @@
  * {
-font-family:Futura;
+  font-family:Futura;
 }
 h1 {
-color:blue;
+  color:lightblue;
 }
 p {
-color:lightblue;
+  color:#012;
 }
 rt {
-font-family:Arial;
+  font-family:Arial;
+  color:black;
 }
 .highlight {
-background-color:yellow;
+  background-color:yellow;
 }
 .joke {
-font-family:"Comic Sans MS";
+  font-family:"Comic Sans MS";
 }
