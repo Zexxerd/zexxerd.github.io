@@ -1,2 +1,2 @@
 # zexxerd.github.io
-website
+https://zexxerd.github.io
