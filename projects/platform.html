@@ -7,12 +7,24 @@
 </head>
 <body>
 <h2>Platform</h2>
-<div id="Textboard" style="width:256px;height:128px;border:2px black">
+<div id="Textboard" style="width:512px;height:256px;border:2px black">
 </div>
-<canvas id="Platform" width="256px" height="128px" style="display:none"></canvas>
+<!--<canvas id="Platform" width="256px" height="128px" style="display:none"></canvas>-->
 <script>
   var tf = confirm("This site may use cookies to store information for this project in the future.");
   if (!tf){window.history.back(1);}
+  const tiles = " =☁-↑+@&?"; // currently 0-9
+  const levels = [`\
+0200000200000200
+0020000200002000
+0002000200020002
+0000200200200200
+0000020202020202
+0000002220000000
+8000000110000070
+1111111111111111
+`];
+//document.getElementById("Textboard").innerHTML = levels[0];
 </script>
 </body>
 </html>
