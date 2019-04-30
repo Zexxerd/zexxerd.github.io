@@ -1,8 +1,12 @@
  * {
   font-family:Futura;
 }
+body {
+background-color:#3bf;
+}
 h1 {
-  color:lightblue;
+  /*color:lightblue;*/
+  color:#001;
 }
 p {
   color:#012;
