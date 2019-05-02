@@ -35,8 +35,8 @@
 `];
   
   for(let i = 0; i < 64;i++){
-    document.getElementById("Textboard").innerHTML +="<p id=\"t" + i +"\">*</p>";
-    if (i+1 % 8 == 0) {document.getElementById("Textboard").innerHTML +="<br/>";}
+    document.getElementById("Textboard").innerHTML +="<span id=\"t" + i +"\">*</span>";
+    if ((i+1) % 8 == 0) {document.getElementById("Textboard").innerHTML +="<br/>";}
   }
 //document.getElementById("Textboard").innerHTML = levels[0];
 </script>
