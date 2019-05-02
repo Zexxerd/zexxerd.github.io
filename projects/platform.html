@@ -7,12 +7,21 @@
 </head>
 <body>
 <h2>Platform</h2>
-<div id="Textboard" style="width:512px;height:256px;border:2px black;font-family:Courier New">
+<div id="Textboard" style="width:512px;height:256px;border:2px solid black;font-family:Courier New">
 </div>
 <!--<canvas id="Platform" width="256px" height="128px" style="display:none"></canvas>-->
 <script>
+  var level = 0;
+  var levelBoard;
+  func loadLevel(){
+    let temp = levels[level].split("\n");
+    for (let i=0;i<temp.length;i++){
+        levelBoard[i] = temp[i].split("");
+    }
+  }
   var tf = confirm("This site may use cookies to store information for this project in the future.");
   if (!tf){window.history.back(1);}
+  
   const tiles = " =☁△-↑+@ ?■□"; // currently 0-9
   const levels = [`\
 0200000200000200
@@ -24,6 +33,11 @@
 8000000110000070
 1111111111111111
 `];
+  
+  for(let i = 0; i < 64;i++){
+    document.getElementById("Textboard").innerHTML +="<p id=\"t" + i +"\">*</p>";
+    if (i+1 % 8 == 0) {document.getElementById("Textboard").innerHTML +="<br/>";}
+  }
 //document.getElementById("Textboard").innerHTML = levels[0];
 </script>
 </body>
