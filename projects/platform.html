@@ -4,10 +4,14 @@
 <meta charset="utf-8">
 <title>Platform (HTML5)</title>
 <link rel="stylesheet" type="text/css" href="../css/main.css">
+<style>
+  span.tile {
+  font-family: "Courier New";
+  }
 </head>
 <body>
 <h2>Platform</h2>
-<div id="Textboard" style="width:512px;height:256px;font-size:2em;border:2px solid black;font-family:Courier New">
+<div id="Textboard" style="width:512px;height:256px;font-size:2em;border:2px solid black;background-color:white">
   <div id="textInner" style="line-height:50%;margin-top:10px">
   </div>
 </div>
@@ -37,7 +41,7 @@
   var au = "*";
   function asterisk(){
     if (au == "*"){au = "_";} else {au = "*"};
-    // au = (au == "*" ? "_" : "_");
+    // au = (au == "*" ? "_" : "*");
     for (let i = 0; i < WIDTH * HEIGHT; i++){
       document.getElementById("tile" + i).innerHTML = au;
     }
@@ -47,7 +51,7 @@
  
   document.getElementById("textInner").innerHTML = "";
   for(let i = 0; i < WIDTH * HEIGHT;i++){
-    document.getElementById("textInner").innerHTML +="<span id=\"tile" + i +"\">*</span>";
+    document.getElementById("textInner").innerHTML +="<span id=\"tile" + i +"\" class=\"tile\">*</span>";
     if ((i+1) % WIDTH == 0) {
       document.getElementById("textInner").innerHTML +="<br/>";
     }
