@@ -7,9 +7,8 @@
 </head>
 <body>
 <h2>Platform</h2>
-<div id="Textboard" style="width:512px;height:256px;border:2px solid black;font-family:Courier New">
-  <div id="inner" style="line-height:50%;margin-top:10px">
-    
+<div id="Textboard" style="width:512px;height:256px;font-size:2em;border:2px solid black;font-family:Courier New">
+  <div id="textInner" style="line-height:50%;margin-top:10px">
   </div>
 </div>
 <!--<canvas id="Platform" width="256px" height="128px" style="display:none"></canvas>-->
@@ -46,14 +45,15 @@
   var tf = confirm("This site may use cookies to store information for this project in the future.");
   if (!tf){window.history.back(1);}
  
-  document.getElementById("Textboard").childNodes[0].innerHTML = "";
+  document.getElementById("textInner").innerHTML = "";
   for(let i = 0; i < WIDTH * HEIGHT;i++){
-    document.getElementById("Textboard").childNodes[0].innerHTML +="<span id=\"tile" + i +"\">*</span>";
+    document.getElementById("textInner").innerHTML +="<span id=\"tile" + i +"\">*</span>";
     if ((i+1) % WIDTH == 0) {
-      document.getElementById("Textboard").childNodes[0].innerHTML +="<br/>";
+      document.getElementById("textInner").childNodes[0].innerHTML +="<br/>";
     }
   }
   
+  loadLevel();
   document.getElementById("Textboard").addEventListener("click",asterisk);
 //document.getElementById("Textboard").innerHTML = levels[0];
 </script>
