@@ -1,4 +1,4 @@
- * {
+* {
   font-family:Futura;
 }
 body {
@@ -20,4 +20,7 @@ rt {
 }
 .joke {
   font-family:"Comic Sans MS";
+}
+hlist-begin hlist-end {
+  border-width: 0px;
 }
