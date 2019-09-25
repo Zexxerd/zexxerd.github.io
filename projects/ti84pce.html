@@ -7,9 +7,11 @@
 <link rel="shortcut icon" href="/favicon/favicon64x64.ico">
 </head>
 <body>
+  <h1 style="color:red">Warning</h1>
+  <p>This oddly does not parse ampersand codes.</p><br/>
 <p>Run this on <a href="http://wikiti.brandonw.net/index.php?title=84PCE:OS:Include_File" target="_blank">this website</a>:</p>
 <textarea rows="3" cols="75" readonly style="resize:none;font-family:<!--TI Calc Fonts,-->Courier New,monospace">
-window.location = "data:application/octet-stream," + encodeURIComponent(document.getElementsByTagName("pre")[0].innerHTML);
+window.location = "data:application/octet-stream;charser=utf-8," + encodeURIComponent(document.getElementsByTagName("pre")[0].innerHTML);
 </textarea>
 </body>
 </html>
