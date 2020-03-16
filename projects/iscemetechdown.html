@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Is Cemetech Down?</title>
+<link rel="stylesheet" href="../css/main.css">
+<link rel="shortcut icon" href="/favicon/favicon64x64.ico">
+</head>
+<body>
+<h1 id="title_text"></h1>
+<button type="button" id="pushthis" onclick="isCemetechDown.send()">Check again?</button>
+<script type="application/javascript">
+var isCemetechDown = new XMLHttpRequest();
+isCemetechDown.open('GET','https://cemetech.net')
+isCemetechDown.onreadystatechange = function () { 
+    if (myRequest.readyState === 4) {
+        document.getElementById('title_text').innerHTML = isCemetechDown.responseText;
+    } else {
+        document.getElementById('title_text').innerHTML = "Error?!";
+    }
+};
+</script>
+</body>
+</html>
