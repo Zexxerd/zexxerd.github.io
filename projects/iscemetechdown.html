@@ -11,9 +11,9 @@
 <button type="button" id="pushthis" onclick="isCemetechDown.send()">Check again?</button>
 <script type="application/javascript">
 var isCemetechDown = new XMLHttpRequest();
-isCemetechDown.open('GET','https://cemetech.net')
+isCemetechDown.open('GET','https://cemetech.net');
 isCemetechDown.onreadystatechange = function () { 
-    if (myRequest.readyState === 4) {
+    if (isCemetechDown.readyState === 4) {
         document.getElementById('title_text').innerHTML = isCemetechDown.responseText;
     } else {
         document.getElementById('title_text').innerHTML = "Error?!";
