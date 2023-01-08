@@ -4,7 +4,7 @@
     <title>Application Variables</title>
     <meta name="description" content="zexxerd's website">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="shortcut icon" href="/favicon/favicon64x64.ico">
   </head>
   <body>
@@ -20,11 +20,15 @@
     <p>The following sections are provided to make your life easier:</p>
     <ol>
       <li>The .8xv file</li>
-      <li>The variable section content</li>
+      <li>The variable data section</li>
     </ol>
     
     <h2>The .8xv file</h2>
-    ".8xv" is the extension used for TI-84 variable files. The contents of this file type's header are shown here.
+    <p>".8xv" is the extension used for TI-84 variable files. This file type can hold many kinds of variables, including AppVars!</p>
+    <p>In order to read from it, you have to know how the data is arranged, which the table below will show you.</p>
+    <p>All 2-byte values are stored in Intel-style little-endian notation, which just means that they're stored from least significant to most significant.</p>
+    <p>Example: <span class="code">0x2949</span> would be stored as <span class="code">49 29</span>.</p>
+    <h3>.8xv file specification (for AppVars)</h3>
     <table>
       <tr>
         <th>Offset</th>
@@ -34,17 +38,115 @@
       <tr>
         <td>0</td>
         <td>8 bytes</td>
-        <td>File signature. Is always "**TI83F*"</td>
+        <td>File signature. This is always <span class="code">**TI83F*</span></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>3 bytes</td>
+        <td>Further signature. This is always <span class="code">0x1A</span>, <span class="code">0x0A</span>, and <span class="code">0x00</span> (26,10,0).</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>42 bytes</td>
+        <td>File comment. Padded with null characters if it takes up less than 42 bytes.</td>
+      </tr>
+      <tr>
+        <td>53</td>
+        <td>2 bytes</td>
+        <td>Length in bytes of the data section. This is 57 bytes less than the total file size <i>(not of the data section!)</i>.</td>
+      </tr>
+      <tr>
+        <td>55</td>
+        <td><i>n</i> bytes</td>
+        <td>The data section. In an AppVar file this contains all of the AppVar data.</td>
+      </tr>
+      <tr>
+        <td>55+<i>n</i></td>
+        <td>2 bytes</td>
+        <td>File checksum. This is basically the lower 16 bits of the sum of all the bytes in the data section.</td>
       </tr>
     </table>
+    <br/>
+    <p>Don't forget that the data section has its own specification!</p>
+    <h3>The variable data section</h3>
+    <p>Don't make the mistake I made and forget that the data here needs to be formatted too!</p>
+    <p>Your AppVar file will <i>not</i> work if you just dump your data in here. (You have to look at some more info before you can just do that!)</p>
+    <p>Anyway, each variable in an .8xv file is contained in this section. For us, we will be fitting one AppVar into this file,</p>
+    <p>so we shouldn't worry about figuring out how to put multiple variables in here.</p>
+    <table>
+      <tr>
+        <th>Offset</th>
+        <th>Length</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>2 bytes</td>
+        <td>Storage type? Always has a value of <span class="code">0x0B</span> (11) or <span class="code">0x0D</span> (13).</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>2 bytes</td>
+        <td>Length in bytes of the variable data (Should the length of the entire data secion minus 17).</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>1 byte</td>
+        <td>Variable type ID byte. The type ID for an AppVar is <span class="code">0x15</span> (21)</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>8 bytes</td>
+        <td>Variable name as it shows up on your calculator. Padded with null characters on the right.</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>1 byte</td>
+        <td>Version. Normally set to 0. This parameter exists if "Storage type" is <span class="code">0x0D</span> (13).</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>1 byte</td>
+        <td>Flag. Set to <span class="code">0x80</span> (128) if archived, otherwise 0. Exists if "Storage type" is <span class="code">0x0D</span> (13).</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>2 bytes</td>
+        <td>Length in bytes of the variable data (this is a copy of offset 2).</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td><i>n</i> bytes</td>
+        <td>Entry data. Specified below.</td>
+      </tr>
+    </table>
+    <h4>Entry data</h4>
+    <table>
+      <tr>
+        <th>Offset</th>
+        <th>Length</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>2 bytes</td>
+        <td>Length of the entry data</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><i>n</i> bytes</td>
+        <td>The data.</td>
+      </tr>
+    </table>
+  <p>And that's that! I hope this guide helps you all learn how to create and read AppVar files on your computer!</p>
   </body>
 <!--
-      A
-     A A
-    A   A
-   A A A A
-  A A A A A
- A         A
-A           A
+      A        PPPPPP   PPPPPP    
+     A A       P     P  P     P
+    A   A      P     P  P     P
+   A A A A     PPPPPP   PPPPPP 
+  A A A A A    P        P      
+ A         A   P        P      
+A           A  P        P      
 -->
-  </html>
+</html>
