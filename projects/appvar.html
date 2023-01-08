@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Application Variables</title>
+    <meta name="description" content="zexxerd's website">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="shortcut icon" href="/favicon/favicon64x64.ico">
+  </head>
+  <body>
+    <h1>Application Variables!</h1>
+    <p>Application variables, or AppVars, are variables that assembly programs and the TI-OS can use to store ANY kind of data!</p>
+    <p>These are often used to store information that is to be used later in some shape or form.</p>
+    <p>While it is easy to make them using the C(++) toolchain, sometimes you might want that an external program be used to create data that one of your programs can use.</p>
+    <br/>
+    <p style="font-weight:bold">This guide is here to help you do that!</p>
+    <br/>
+    <p>This guide is here so that there is no ambiguity on how you and your program should read and write to an AppVar file.</p>
+    <br/>
+    <p>The following sections are provided to make your life easier:</p>
+    <ol>
+      <li>The .8xv file</li>
+      <li>The variable section content</li>
+    </ol>
+    
+    <h2>The .8xv file</h2>
+    ".8xv" is the extension used for TI-84 variable files. The contents of this file type's header are shown here.
+    <table>
+      <tr>
+        <th>Offset</th>
+        <th>Length</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>8 bytes</td>
+        <td>File signature. Is always "**TI83F*"</td>
+      </tr>
+  </body>
+<!--
+      A
+     A A
+    A   A
+   A A A A
+  A A A A A
+ A         A
+A           A
+-->
+  </html>
