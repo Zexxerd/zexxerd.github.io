@@ -23,7 +23,7 @@
       <li>The variable data section</li>
     </ol>
     
-    <h2>The .8xv file</h2>
+    <h2 id="file_header">The .8xv file</h2>
     <p>".8xv" is the extension used for TI-84 variable files. This file type can hold many kinds of variables, including AppVars!</p>
     <p>In order to read from it, you have to know how the data is arranged, which the table below will show you.</p>
     <p>All 2-byte values are stored in Intel-style little-endian notation, which just means that they're stored from least significant to most significant.</p>
@@ -71,8 +71,9 @@
     <h3>The variable data section</h3>
     <p>Don't make the mistake I made and forget that the data here needs to be formatted too!</p>
     <p>Your AppVar file will <i>not</i> work if you just dump your data in here. (You have to look at some more info before you can just do that!)</p>
-    <p>Anyway, each variable in an .8xv file is contained in this section. For us, we will be fitting one AppVar into this file,</p>
+    <p>Anyway, every variable in an .8xv file is contained in this section. For us, we will be fitting one AppVar into this file,</p>
     <p>so we shouldn't worry about figuring out how to put multiple variables in here.</p>
+    <p>Each variable <b>entry</b> is formatted like this:</p>
     <table>
       <tr>
         <th>Offset</th>
@@ -87,7 +88,7 @@
       <tr>
         <td>2</td>
         <td>2 bytes</td>
-        <td>Length in bytes of the variable data (Should the length of the entire data secion minus 17).</td>
+        <td>Length in bytes of the variable data (Should be the length of the entire data secion minus 17).</td>
       </tr>
       <tr>
         <td>4</td>
@@ -138,7 +139,8 @@
         <td>The data.</td>
       </tr>
     </table>
-  <p>And that's that! I hope this guide helps you all learn how to create and read AppVar files on your computer!</p>
+    <p>And that's that! I hope this guide helps you all learn how to create and read AppVar files on your computer!</p>
+    <p>Thanks go to <a href="https://merthsoft.com">Merthsoft</a> for providing information about .8xv files!</p>
   </body>
 <!--
       A        PPPPPP   PPPPPP    
