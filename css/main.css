@@ -2,24 +2,38 @@
   font-family:Futura;
 }
 body {
-background-color:#3bf;
+background-color: #3bf;
 }
 h1 {
   /*color:lightblue;*/
-  color:#001;
+  color: #001;
 }
 p {
-  color:#012;
+  color: #012;
+}
+table, th, td {
+  border: black 1px solid;
+}
+table {
+  background-color: #40EEFF;
+}
+th {
+  background-color: #60AAFF;
 }
 rt {
-  font-family:Arial;
-  color:black;
+  font-family: "Arial";
+  color: black;
 }
 .highlight {
-  background-color:yellow;
+  background-color: yellow;
+}
+.code {
+  font-family: "Courier New";
+  background-color: gray;
+  color: black;
 }
 .joke {
-  font-family:"Comic Sans MS";
+  font-family: "Comic Sans MS";
 }
 hlist-begin hlist-end {
   border-width: 0px;
