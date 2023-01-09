@@ -2,10 +2,9 @@
   font-family:Futura;
 }
 body {
-background-color: #3bf;
+background-color: #DEF;
 }
 h1 {
-  /*color:lightblue;*/
   color: #001;
 }
 p {
@@ -14,12 +13,10 @@ p {
 table, th, td {
   border: black 1px solid;
 }
-table {
-  background-color: #40EEFF;
+table, th {
+  background-color: #FFF;
 }
-th {
-  background-color: #60AAFF;
-}
+
 rt {
   font-family: "Arial";
   color: black;
@@ -29,7 +26,8 @@ rt {
 }
 .code {
   font-family: "Courier New";
-  background-color: gray;
+  background-color: #DDDDE0;
+  border-radius: 1px;
   color: black;
 }
 .joke {
